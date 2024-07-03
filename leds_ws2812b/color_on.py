@@ -1,6 +1,5 @@
 #!/usr/bin/env python3
 # Importuj wszystkie niezbędne pakiety do pracy z diodami LED na Raspberry Pi
-import time
 import board
 import neopixel
 # Zainicjuj zmienną strips, podając pin danych GPIO
