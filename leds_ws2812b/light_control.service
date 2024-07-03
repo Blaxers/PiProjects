@@ -7,4 +7,4 @@ User=root
 PermissionsStartOnly=true
 ExecStartPre=/bin/chmod +x /home/blaxers/Desktop/PiProjects/leds_ws2812b/start.sh
 ExecStartPre=/bin/chown root:root /home/blaxers/Desktop/PiProjects/leds_ws2812b/start.sh
-ExecStartPre=/bin/chmod u+s /path/to/your/executable
+ExecStartPre=/bin/chmod u+s /home/blaxers/Desktop/PiProjects/leds_ws2812b/
