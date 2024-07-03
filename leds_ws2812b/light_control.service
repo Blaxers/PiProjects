@@ -3,7 +3,8 @@ Description=Light Control Service
 
 [Service]
 ExecStart=/home/blaxers/Desktop/PiProjects/leds_ws2812b/start.sh
-User=root  # Zastąp 'your_username' swoją nazwą użytkownika, jeśli potrzebne
-
-[Install]
-WantedBy=multi-user.target
+User=root
+PermissionsStartOnly=true
+ExecStartPre=/bin/chmod +x /home/blaxers/Desktop/PiProjects/leds_ws2812b/start.sh
+ExecStartPre=/bin/chown root:root /home/blaxers/Desktop/PiProjects/leds_ws2812b/start.sh
+ExecStartPre=/bin/chmod u+s /path/to/your/executable
