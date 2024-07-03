@@ -7,6 +7,11 @@ PATH_TO_SCRIPTS_PYTHON="/home/blaxers/Desktop/PiProjects/leds_ws2812b"
 time_on="18:00"
 time_off="22:00"
 
+
+# off on start script
+python3 "$PATH_TO_SCRIPTS_PYTHON/color_off.py"
+sleep 2
+
 # Funkcja konwertująca czas HH:MM na sekundy od północy
 time_to_seconds() {
   IFS=: read -r h m <<< "$1"
