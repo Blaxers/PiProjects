@@ -1,0 +1,14 @@
+[Unit]
+Description=Light Control Service
+After=network.target
+
+[Service]
+ExecStart=/home/blaxers/Desktop/PiProjects/leds_ws2812b/start.sh
+WorkingDirectory=/path/to/your/
+StandardOutput=inherit
+StandardError=inherit
+Restart=always
+User=your_username
+
+[Install]
+WantedBy=multi-user.target
