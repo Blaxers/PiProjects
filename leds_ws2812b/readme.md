@@ -15,3 +15,9 @@ chmod +x ./*
 ```
 sudo cp light_control.service /etc/systemd/system/ && sudo chmod 644 /etc/systemd/system/light_control.service && sudo systemctl daemon-reload && sudo systemctl enable light_control.service && sudo systemctl start light_control.service && sudo systemctl status light_control.service
 ```
+
+
+5. remove service
+```
+sudo rm /etc/systemd/system/light_control.service && sudo systemctl daemon-reload
+```
