@@ -1,5 +1,8 @@
 #!/bin/bash
 
+# Ścieżka do skryptów Pythona
+PATH_TO_SCRIPTS_PYTHON="/home/blaxers/Desktop/PiProjects/leds_ws2812b"
+
 # Definiowanie czasów w formacie HH:MM
 time_on="18:00"
 time_off="22:00"
@@ -30,21 +33,21 @@ while true; do
   time_off_sec=$(time_to_seconds "$time_off")
 
   if (( now_sec >= time_on_sec && now_sec < time_off_sec )); then
-    # Uruchomienie skryptu color_on.py
-    python3 color_on.py
+    # Uruchomienie skryptu color_on.py z określoną ścieżką
+    python3 "$PATH_TO_SCRIPTS_PYTHON/color_on.py"
 
     # Obliczenie ile czasu zostało do 22:00 i odczekanie tego czasu
     seconds_left=$(seconds_until "$time_off")
     echo "Światło włączone. Pozostało $seconds_left sekund do 22:00."
     sleep "$seconds_left"
 
-    # Po 22:00 uruchomienie skryptu color_off.py
-    python3 color_off.py
+    # Po 22:00 uruchomienie skryptu color_off.py z określoną ścieżką
+    python3 "$PATH_TO_SCRIPTS_PYTHON/color_off.py"
 
   else
     # Jeśli jest po 22:00, uruchomienie skryptu color_off.py, jeśli jeszcze nie zostało uruchomione
     if (( now_sec >= time_off_sec )); then
-      python3 color_off.py
+      python3 "$PATH_TO_SCRIPTS_PYTHON/color_off.py"
     fi
 
     # Obliczenie ile czasu zostało do 18:00 następnego dnia i odczekanie tego czasu
@@ -52,7 +55,7 @@ while true; do
     echo "Światło wyłączone. Pozostało $seconds_left sekund do 18:00."
     sleep "$seconds_left"
 
-    # Po 18:00 uruchomienie skryptu color_on.py
-    python3 color_on.py
+    # Po 18:00 uruchomienie skryptu color_on.py z określoną ścieżką
+    python3 "$PATH_TO_SCRIPTS_PYTHON/color_on.py"
   fi
 done
