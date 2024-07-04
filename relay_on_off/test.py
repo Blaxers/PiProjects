@@ -1,26 +1,25 @@
 #!/usr/bin/env python3
 import RPi.GPIO as GPIO
 import time
+# Set the GPIO pin number
+PIN_RELAY = 23  # GPIO16
+
+# Set the GPIO mode to BCM
 GPIO.setmode(GPIO.BCM)
-# Relay 1
-GPIO.setup(23, GPIO.OUT)
-# Relay 2
-GPIO.setup(24, GPIO.OUT)
+
+# Setup the GPIO pin as output
+GPIO.setup(PIN_RELAY, GPIO.OUT)
 
 try:
-    while True:
-        GPIO.output(23, GPIO.HIGH)
-        print('Relay 1 ON')
-        time.sleep(1)
-        GPIO.output(24, GPIO.HIGH)
-        print('Relay 2 ON')
-        time.sleep(1)
-        GPIO.output(23, GPIO.LOW)
-        print('Relay 1 OFF')
-        time.sleep(1)
-        GPIO.output(24, GPIO.LOW)
-        print('Relay 2 OFF')
-        time.sleep(1)
+    print("Turning on relay")
+    GPIO.output(PIN_RELAY, GPIO.HIGH)
+    time.sleep(1)
+
+except KeyboardInterrupt:
+    pass  # This will end the script with CTRL+C
 
 finally:
+    # Turn off the relay before cleanup
+    GPIO.output(PIN_RELAY, GPIO.LOW)
+    # Cleanup GPIO
     GPIO.cleanup()
